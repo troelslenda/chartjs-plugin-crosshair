@@ -93,6 +93,9 @@ export default {
   },
 
   destroy: function(chart) {
+    if (!hasCrosshairConfiguration(chart)) {
+      return
+    }
     var syncEnabled = this.getOption(chart, 'sync', 'enabled');
     if (syncEnabled) {
       window.removeEventListener('sync-event', chart.crosshair.syncEventHandler);
@@ -101,6 +104,9 @@ export default {
   },
 
   panZoom: function(chart, increment) {
+    if (!hasCrosshairConfiguration(chart)) {
+      return
+    }
     if (chart.crosshair.originalData.length === 0) {
       return;
     }
@@ -295,7 +301,9 @@ export default {
   },
 
   resetZoom: function(chart) {
-
+    if (!hasCrosshairConfiguration(chart)) {
+      return
+    }
     var stop = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
     var update = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
 
@@ -345,7 +353,9 @@ export default {
   },
 
   doZoom: function(chart, start, end) {
-
+    if (!hasCrosshairConfiguration(chart)) {
+      return
+    }
     // swap start/end if user dragged from right to left
     if (start > end) {
       var tmp = start;
@@ -459,7 +469,9 @@ export default {
   },
 
   drawZoombox: function(chart) {
-
+    if (!hasCrosshairConfiguration(chart)) {
+      return
+    }
     var yScale = this.getYScale(chart);
 
     var borderColor = this.getOption(chart, 'zoom', 'zoomboxBorderColor');
@@ -477,7 +489,9 @@ export default {
   },
 
   drawTraceLine: function(chart) {
-
+    if (!hasCrosshairConfiguration(chart)) {
+      return
+    }
     var yScale = this.getYScale(chart);
 
     var lineWidth = this.getOption(chart, 'line', 'width');
@@ -503,7 +517,9 @@ export default {
   },
 
   drawTracePoints: function(chart) {
-
+    if (!hasCrosshairConfiguration(chart)) {
+      return
+    }
     for (var chartIndex = 0; chartIndex < chart.data.datasets.length; chartIndex++) {
 
       var dataset = chart.data.datasets[chartIndex];

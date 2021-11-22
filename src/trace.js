@@ -30,13 +30,17 @@ var defaultOptions = {
   }
 };
 
+const hasCrosshairConfiguration = (chart) => {
+  return chart.config.options.scales.x && chart.config.options.plugins.crosshair
+}
+
 export default {
 
   id: 'crosshair',
 
   afterInit: function(chart) {
     
-    if (!chart.config.options.scales.x) {
+    if (!hasCrosshairConfiguration(chart)) {
       return
     }
 
@@ -126,7 +130,9 @@ export default {
   },
 
   handleSyncEvent: function(chart, e) {
-
+    if (!hasCrosshairConfiguration(chart)) {
+      return
+    }
     var syncGroup = this.getOption(chart, 'sync', 'group');
 
     // stop if the sync event was fired from this chart
@@ -167,6 +173,9 @@ export default {
 
   afterEvent: function(chart, event) {
 
+    if (!hasCrosshairConfiguration(chart)) {
+      return
+    }
     if (chart.config.options.scales.x.length == 0) {
       return
     }
@@ -257,6 +266,10 @@ export default {
 
   afterDraw: function(chart) {
 
+    if (!hasCrosshairConfiguration(chart)) {
+      return
+    }
+
     if (!chart.crosshair.enabled) {
       return;
     }
@@ -273,6 +286,10 @@ export default {
   },
 
   beforeTooltipDraw: function(chart) {
+    
+    if (!hasCrosshairConfiguration(chart)) {
+      return
+    }
     // suppress tooltips on dragging
     return !chart.crosshair.dragStarted && !chart.crosshair.suppressTooltips;
   },

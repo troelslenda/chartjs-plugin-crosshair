@@ -16,7 +16,8 @@
     "crosshair"
   ],
   "files": [
-    "dist/*.js"
+    "dist/*.js",
+    "types/*.d.ts"
   ],
   "scripts": {
     "build": "gulp build"

@@ -1,6 +1,7 @@
 /.vscode
 /bower.json
-/dist
+; not using npm registry
+;/dist
 /node_modules
 /package-lock.json
 .DS_Store

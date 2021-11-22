@@ -6,6 +6,7 @@
   "license": "MIT",
   "main": "dist/chartjs-plugin-crosshair.js",
   "module": "dist/chartjs-plugin-crosshair.esm.js",
+  "types": "types/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/abelheinsbroek/chartjs-plugin-crosshair.git"
